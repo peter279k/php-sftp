@@ -11,4 +11,6 @@ matrix:
 install:
   - composer install
 script:
- - php sftp.php
+  - sudo apt-get install sshpass
+  - sshpass -p 'traivs' ssh -o StrictHostKeyChecking=no travis@localhost exit
+  - echo $?
