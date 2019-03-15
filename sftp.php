@@ -6,6 +6,6 @@ use phpseclib\Net\SFTP;
 
 $sftp = new SFTP('localhost');
 
-if (!$sftp->login('travis', '')) {
+if (!$sftp->login('root', '')) {
 	throw new Exception('Login failed');
 }
