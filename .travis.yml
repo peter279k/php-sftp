@@ -1,6 +1,7 @@
 language: php
 dist: trusty
-sudo: true
+addons:
+  ssh_known_hosts: localhost
 php:
   - '7.1'
   - '7.2'
@@ -11,6 +12,7 @@ matrix:
 install:
   - composer install
 script:
-  - sudo apt-get install sshpass
-  - sshpass -p 'traivs' ssh -o StrictHostKeyChecking=no travis@localhost exit
-  - echo $?
+  - ssh-keygen -N '' -f ~/.ssh/id_rsa
+  - cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  - ssh localhost cat /etc/issue
+  - sudo echo How\'s that?
