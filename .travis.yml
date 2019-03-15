@@ -11,5 +11,4 @@ matrix:
 install:
   - composer install
 script:
- - ./.travis-ssh.sh
  - php sftp.php
